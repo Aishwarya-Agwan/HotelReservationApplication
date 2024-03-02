@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Hotel Reservation Application</title>
+    <link rel="stylesheet" type="text/css" href="css/hotel.css">
+     <link rel="stylesheet" type="text/css" href="css/style.css">
+   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css">
+  <link rel="stylesheet" type="static/text/css" href="css/bootstrap-reboot.css">
+  <link rel="stylesheet" type="static/text/css" href="css/bootstrap-reboot.min.css">
+  <script type="text/javascript" src="js/bootstrap.bundle.js"> </script>
+  <script type="text/javascript" src="js/bootstrap.bundle.min.js"> </script>
+  <script type="text/javascript" src="js/bootstrap.js"> </script>
+  <script type="text/javascript" src="js/bootstrap.min.js"> </script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="assets/css/A.bootstrap.min.css+template.css+fa.min.css+gfonts.min.css,Mcc.LI5f1xXhbm.css.pagespeed.cf.G00NPyYGCq.css" rel="stylesheet" media="screen" />
+ 
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  
+<script>if ( top !== self ) top.location.replace( self.location.href );// Hey, don't iframe my iframe!</script>
+  
+  
+  
+  
+  <script>
+            // "$(window).load(function() {"
+                $(function () {
+            
+                  // Slideshow 1
+                  $("#slider1").responsiveSlides({
+                    maxwidth: 1600,
+                    speed: 600
+                  });
+            });
+  </script>
+</head>
+
+<div th:replace="fragments :: menu"></div>
+
+<body>
+
+<div class="container" style="height:600px;">
+
+<h1 style="color:orange; margin-top:20px;">Add Hotel Details</h1>
+
+<form th:action="@{/saveBooking}" th:object="${booking}" method="post" class="form needs-validation">
+    <div class="form-group">
+        <label for="booking_date">Booking Date</label>
+        <input class="form-control" type="text" th:field="*{booking_date}" id="booking_date" placeholder="booking_date">
+        <div  th:if="${#fields.hasErrors('booking_date')}" th:errors="*{booking_date}"></div>
+    </div>
+    <div class="form-group">
+        <label for="booking_time">Booking Time</label>
+        <input class="form-control" type="text" th:field="*{booking_time}" id="booking_time" placeholder="booking_time">
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('booking_time')}" th:errors="*{booking_time}"></div>
+    </div>
+    
+    <div class="form-group">
+        <label for="num_adults">Number of Adults</label>
+        <input class="form-control" type="text" th:field="*{num_adults}" id="num_adults" placeholder="num_adults">
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('num_adults')}" th:errors="*{num_adults}"></div>
+    </div>
+    
+    <div class="form-group">
+        <label for="num_childern">Number of Childern</label>
+        <input class="form-control" type="text" th:field="*{num_childern}" id="num_childern" placeholder="num_childern">
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('num_childern')}" th:errors="*{num_childern}"></div>
+    </div>
+    
+    
+    
+   <input type="submit"  class="btn btn-secondary mb-3" value="Add Booking">
+   <a  th:href = "@{/getBookings}" class=" btn btn-secondary btn-md mb-3 ">Booking List</a>
+    <a  th:href = "@{/paymentRegister}" class=" btn btn-secondary btn-md mb-3 ">Add Payment</a>
+</form>
+</div>
+ 
+
+
+</body>
+<div th:replace="fragments :: pageFooter"></div>
+</html>

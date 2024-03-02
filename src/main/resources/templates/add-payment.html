@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Hotel Reservation Application</title>
+    <link rel="stylesheet" type="text/css" href="css/hotel.css">
+     <link rel="stylesheet" type="text/css" href="css/style.css">
+   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css">
+  <link rel="stylesheet" type="static/text/css" href="css/bootstrap-reboot.css">
+  <link rel="stylesheet" type="static/text/css" href="css/bootstrap-reboot.min.css">
+  <script type="text/javascript" src="js/bootstrap.bundle.js"> </script>
+  <script type="text/javascript" src="js/bootstrap.bundle.min.js"> </script>
+  <script type="text/javascript" src="js/bootstrap.js"> </script>
+  <script type="text/javascript" src="js/bootstrap.min.js"> </script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="assets/css/A.bootstrap.min.css+template.css+fa.min.css+gfonts.min.css,Mcc.LI5f1xXhbm.css.pagespeed.cf.G00NPyYGCq.css" rel="stylesheet" media="screen" />
+ 
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  
+</head>
+
+<div th:replace="fragments :: menu"></div>
+
+<body>
+
+<div class="container" style=" width:1000px; height:600px;" >
+
+<h1 style="color:orange; margin-top:20px;">Add User Details</h1>
+<form th:action="@{/savePayment}" th:object="${payment}" method="post" class="form needs-validation">
+    <div class="form-group">
+        <label for="roomCharge">Room Charge</label>
+        <input class="form-control" type="text" th:field="*{roomCharge}" id="roomCharge" placeholder="Room Charge">
+        <div  th:if="${#fields.hasErrors('roomCharge')}" th:errors="*{roomCharge}"></div>
+    </div>
+    <div class="form-group">
+        <label for="paymentDate">Payment Date</label>
+        <input class="form-control" type="text" th:field="*{paymentDate}" id="paymentDate" placeholder="Payment Date">
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('v')}" th:errors="*{paymentDate}"></div>
+    </div>
+    
+    <div class="form-group">
+        <label for="creditcardNo">Credit Card No</label>
+        <input class="form-control" type="text" th:field="*{creditcardNo}" id="creditcardNo" placeholder="Credit Card No">
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('creditcardNo')}" th:errors="*{creditcardNo}"></div>
+    </div>
+    
+    
+    
+    
+    <input type="submit"  class="btn btn-secondary mb-3" value="Add Payment">
+    <a  th:href = "@{/getPayments}" class=" btn btn-secondary btn-md mb-3 "> Payment List</a>
+</form>
+</div>
+</body>
+<div th:replace="fragments :: pageFooter"></div>
+</html>
